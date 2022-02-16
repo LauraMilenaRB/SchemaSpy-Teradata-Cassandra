@@ -22,3 +22,4 @@ driverPath=./lib/terajdbc4.jar;./lib/tdgssconfig.jar;./lib/tdgssjava.jar
 schemaspy.o=./output
 schemaspy.host=localhost
 schemaspy.u=dbc
+schemaspy.dp=./terajdbc4.jar
