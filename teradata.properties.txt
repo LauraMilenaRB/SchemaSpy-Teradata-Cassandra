@@ -10,6 +10,7 @@ schemaspy.t=teradata
 # Put those in a specialized .properties file and point to them with -connprops 
 # Example of connectionSpec: jdbc:teradata://TD.DB.ROOT1.NET/DATABASE=DB1,DBS_PORT=1025
 #connectionSpec=jdbc:teradata://dbc/DATABASE=UNIVERSIDAD,DBS_PORT=1025
+
 db=database name
 s=?????
 port=?????
