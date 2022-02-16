@@ -12,8 +12,8 @@ schemaspy.t=teradata
 #connectionSpec=jdbc:teradata://dbc/DATABASE=UNIVERSIDAD,DBS_PORT=1025
 
 db=database name
-s=?????
-port=?????
+s=UNIVERSIDAD
+port=1025
 
 schemaspy.host=localhost
 schemaspy.port=1025
