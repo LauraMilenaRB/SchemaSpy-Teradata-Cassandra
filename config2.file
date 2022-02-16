@@ -19,5 +19,6 @@ driver=com.teradata.jdbc.TeraDriver
 # Use -dp to override.
 driverPath=./lib/terajdbc4.jar;./lib/tdgssconfig.jar;./lib/tdgssjava.jar
 
-schemaspy.o=./output/
+schemaspy.o=./output
 schemaspy.host=localhost
+schemaspy.u=dbc
