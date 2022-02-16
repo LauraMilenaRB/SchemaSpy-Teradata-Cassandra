@@ -1,56 +1,43 @@
-CREATE DATABASE UNIVERSIDAD
-AS PERMANENT = 60e6, -- 60MB
-    SPOOL = 120e6; -- 120MB
-
-
 CREATE SET TABLE UNIVERSIDAD.Estudiante (
-   EstudianteID INTEGER,
+   EstudianteID INTEGER NOT NULL,
    Nombre VARCHAR(30),
-   Apellido VARCHAR(30)
-)
-UNIQUE PRIMARY INDEX (EstudianteID );
-
-
+   Apellido VARCHAR(30),
+   CONSTRAINT pk_estudinate PRIMARY KEY (EstudianteID)
+);
 CREATE SET TABLE UNIVERSIDAD.Materia (
-   MateriaID INTEGER,
+   MateriaID INTEGER NOT NULL,
    Nombre_Materia VARCHAR(30),
-   Descripcion VARCHAR(30)
-)
-UNIQUE PRIMARY INDEX (MateriaID );
-
-
+   Descripcion VARCHAR(100),
+   CONSTRAINT pk_materia PRIMARY KEY (MateriaID)
+);
 CREATE SET TABLE UNIVERSIDAD.Estudiante_Materia (
-	EstudianteID INTEGER,
-	MateriaID INTEGER,
-	FOREIGN KEY (EstudianteID) REFERENCES WITH NO CHECK OPTION Estudiante(EstudianteID),
-	FOREIGN KEY (MateriaID) REFERENCES WITH NO CHECK OPTION Materia(MateriaID)
-)
-UNIQUE PRIMARY INDEX (EstudianteID,MateriaID );
-
+	EstudianteID INTEGER NOT NULL,
+	MateriaID INTEGER NOT NULL,
+	CONSTRAINT fk_estudiante_materia_estudiante FOREIGN KEY (EstudianteID) REFERENCES Estudiante(EstudianteID),
+	CONSTRAINT fk_estudiante_materia_materia FOREIGN KEY (MateriaID) REFERENCES Materia(MateriaID),
+	CONSTRAINT pk_estudiante_materia PRIMARY KEY (EstudianteID,MateriaID)
+);
 CREATE SET TABLE UNIVERSIDAD.Profesor (
-   ProfesorID INTEGER,
+   ProfesorID INTEGER NOT NULL,
    Nombre VARCHAR(30),
-   apellido VARCHAR(30)
-)
-UNIQUE PRIMARY INDEX (ProfesorID );
-
+   apellido VARCHAR(30),
+   CONSTRAINT pk_profesor PRIMARY KEY (ProfesorID)
+);
 CREATE SET TABLE UNIVERSIDAD.Salon (
-   SalonID INTEGER,
-   Nombre_Edificio CHAR(3)
-)
-UNIQUE PRIMARY INDEX (SalonID );
-
+   SalonID INTEGER NOT NULL,
+   Nombre_Edificio CHAR(3),
+   CONSTRAINT pk_salon PRIMARY KEY (SalonID)
+);
 CREATE SET TABLE UNIVERSIDAD.Grupo (
-	GrupoID INTEGER,
-	MateriaID INTEGER,
-	ProfesorID INTEGER,
-	SalonID INTEGER,
-	FOREIGN KEY (MateriaID) REFERENCES WITH NO CHECK OPTION Materia(MateriaID),
-	FOREIGN KEY (ProfesorID) REFERENCES WITH NO CHECK OPTION Profesor(ProfesorID),
-	FOREIGN KEY (SalonID) REFERENCES WITH NO CHECK OPTION Salon(SalonID)
-)
-UNIQUE PRIMARY INDEX (GrupoID);
-
+	GrupoID INTEGER NOT NULL,
+	MateriaID INTEGER ,
+	ProfesorID INTEGER ,
+	SalonID INTEGER ,
+	CONSTRAINT fk_grupo_salon FOREIGN KEY (SalonID) REFERENCES Salon(SalonID),
+	CONSTRAINT fk_grupo_profesor FOREIGN KEY (ProfesorID) REFERENCES Profesor(ProfesorID),
+	CONSTRAINT fk_grupo_materia FOREIGN KEY (MateriaID) REFERENCES Materia(MateriaID),
+	CONSTRAINT pk_grupo PRIMARY KEY (GrupoID)
+);
 
 INSERT INTO UNIVERSIDAD.Estudiante VALUES (
    123,
@@ -68,25 +55,35 @@ INSERT INTO UNIVERSIDAD.Estudiante VALUES (
    'Devian'
 );
 
-INSERT INTO UNIVERSIDAD.Estudiante_Materia VALUES (
-   123,
-   123,
-);
-
-INSERT INTO UNIVERSIDAD.Estudiante_Materia VALUES (
-   123,
-   123,
-);
+SELECT * FROM UNIVERSIDAD.Estudiante;
 
 INSERT INTO UNIVERSIDAD.Materia VALUES (
    1,
-   123,
+   'SGDB',
+   'SISTEMA DE GESTION DE BASE DE DATOS'
+);
+INSERT INTO UNIVERSIDAD.Materia VALUES (
+   2,
+   'SGDB2',
+   'SISTEMA DE GESTION DE BASE DE DATOS2'
 );
 
-INSERT INTO UNIVERSIDAD.Materia VALUES (
-   001,
+SELECT * FROM UNIVERSIDAD.Materia;
+
+INSERT INTO UNIVERSIDAD.Estudiante_Materia VALUES (
    123,
+   1
 );
+INSERT INTO UNIVERSIDAD.Estudiante_Materia VALUES (
+   124,
+   1
+);
+INSERT INTO UNIVERSIDAD.Estudiante_Materia VALUES (
+   125,
+   1
+);
+
+SELECT * FROM UNIVERSIDAD.Estudiante_Materia;
 
 INSERT INTO UNIVERSIDAD.Profesor VALUES (
    111,
@@ -94,15 +91,27 @@ INSERT INTO UNIVERSIDAD.Profesor VALUES (
    'Gomez'
 );
 
+SELECT * FROM UNIVERSIDAD.Profesor;
+
 INSERT INTO UNIVERSIDAD.Salon VALUES (
    10,
-   'C1',
+   'C1'
 );
 
+SELECT * FROM UNIVERSIDAD.Salon;
 
 INSERT INTO UNIVERSIDAD.Grupo VALUES (
-   01,
-   001,
+   1,
+   1,
    111,
-   10,
+   10
 );
+
+SELECT * FROM UNIVERSIDAD.Grupo;
+
+DROP TABLE UNIVERSIDAD.Grupo;
+DROP TABLE UNIVERSIDAD.Salon;
+DROP TABLE UNIVERSIDAD.Estudiante_Materia;
+DROP TABLE UNIVERSIDAD.Materia;
+DROP TABLE UNIVERSIDAD.Profesor;
+DROP TABLE UNIVERSIDAD.Estudiante;
