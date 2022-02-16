@@ -11,7 +11,7 @@ schemaspy.t=teradata
 # Example of connectionSpec: jdbc:teradata://TD.DB.ROOT1.NET/DATABASE=DB1,DBS_PORT=1025
 #connectionSpec=jdbc:teradata://dbc/DATABASE=UNIVERSIDAD,DBS_PORT=1025
 
-db=database name
+db=dbc
 s=UNIVERSIDAD
 port=1025
 
