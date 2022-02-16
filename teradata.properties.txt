@@ -26,5 +26,3 @@ driverPath=./lib/terajdbc4.jar;./lib/tdgssconfig.jar;./lib/tdgssjava.jar
 schemaspy.o=./output/
 
 #schemaspy.dp=./terajdbc4.jar
-
-java -jar schemaspy.jar -t dbType -dp C:/sqljdbc4-3.0.jar -db dbName -host server -port 1433 [-s schema] -u user [-p password] -o outputDir
