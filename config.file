@@ -13,18 +13,3 @@ schemaspy.o=./output/
 # db scheme for which generate diagrams
 schemaspy.s=dbo
 schemaspy.imageformat=png
-
-
-0090488503186519242109      
-0090488503186519242109      
-
-
-
-g_local_movement_id
-
-CODISER + OFIAPE + NUMECTA + DIGICTA + FEOPER + SECOPER
-Ver si nos conviene poner CCC en vez de codiser+ofiape+numecta+digicta (asi, si es posible no ponemos soporte local de cuentas)
-
-
-se forma con el account_id + event_date + CONTRACT_OPERATION_SEQ_ID 
-de tabla t_amol_current_saving_agreement_move
