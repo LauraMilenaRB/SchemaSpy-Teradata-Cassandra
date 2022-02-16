@@ -1,0 +1,108 @@
+CREATE DATABASE UNIVERSIDAD
+AS PERMANENT = 60e6, -- 60MB
+    SPOOL = 120e6; -- 120MB
+
+
+CREATE SET TABLE UNIVERSIDAD.Estudiante (
+   EstudianteID INTEGER,
+   Nombre VARCHAR(30),
+   Apellido VARCHAR(30)
+)
+UNIQUE PRIMARY INDEX (EstudianteID );
+
+
+CREATE SET TABLE UNIVERSIDAD.Materia (
+   MateriaID INTEGER,
+   Nombre_Materia VARCHAR(30),
+   Descripcion VARCHAR(30)
+)
+UNIQUE PRIMARY INDEX (MateriaID );
+
+
+CREATE SET TABLE UNIVERSIDAD.Estudiante_Materia (
+	EstudianteID INTEGER,
+	MateriaID INTEGER,
+	FOREIGN KEY (EstudianteID) REFERENCES WITH NO CHECK OPTION Estudiante(EstudianteID),
+	FOREIGN KEY (MateriaID) REFERENCES WITH NO CHECK OPTION Materia(MateriaID)
+)
+UNIQUE PRIMARY INDEX (EstudianteID,MateriaID );
+
+CREATE SET TABLE UNIVERSIDAD.Profesor (
+   ProfesorID INTEGER,
+   Nombre VARCHAR(30),
+   apellido VARCHAR(30)
+)
+UNIQUE PRIMARY INDEX (ProfesorID );
+
+CREATE SET TABLE UNIVERSIDAD.Salon (
+   SalonID INTEGER,
+   Nombre_Edificio CHAR(3)
+)
+UNIQUE PRIMARY INDEX (SalonID );
+
+CREATE SET TABLE UNIVERSIDAD.Grupo (
+	GrupoID INTEGER,
+	MateriaID INTEGER,
+	ProfesorID INTEGER,
+	SalonID INTEGER,
+	FOREIGN KEY (MateriaID) REFERENCES WITH NO CHECK OPTION Materia(MateriaID),
+	FOREIGN KEY (ProfesorID) REFERENCES WITH NO CHECK OPTION Profesor(ProfesorID),
+	FOREIGN KEY (SalonID) REFERENCES WITH NO CHECK OPTION Salon(SalonID)
+)
+UNIQUE PRIMARY INDEX (GrupoID);
+
+
+INSERT INTO UNIVERSIDAD.Estudiante VALUES (
+   123,
+   'Javier',
+   'Olarte'
+);
+INSERT INTO UNIVERSIDAD.Estudiante VALUES (
+   124,
+   'Laura',
+   'Ramos'
+);
+INSERT INTO UNIVERSIDAD.Estudiante VALUES (
+   125,
+   'Julian',
+   'Devian'
+);
+
+INSERT INTO UNIVERSIDAD.Estudiante_Materia VALUES (
+   123,
+   123,
+);
+
+INSERT INTO UNIVERSIDAD.Estudiante_Materia VALUES (
+   123,
+   123,
+);
+
+INSERT INTO UNIVERSIDAD.Materia VALUES (
+   1,
+   123,
+);
+
+INSERT INTO UNIVERSIDAD.Materia VALUES (
+   001,
+   123,
+);
+
+INSERT INTO UNIVERSIDAD.Profesor VALUES (
+   111,
+   'Andres',
+   'Gomez'
+);
+
+INSERT INTO UNIVERSIDAD.Salon VALUES (
+   10,
+   'C1',
+);
+
+
+INSERT INTO UNIVERSIDAD.Grupo VALUES (
+   01,
+   001,
+   111,
+   10,
+);
