@@ -1,0 +1,10 @@
+#
+# see http://schemaspy.org/dbtypes.html
+# for configuration / customization details
+#
+
+schemaspy.t=teradata
+schemaspy.o=output
+schemaspy.s=UNIVERSIDAD
+schemaspy.u=DBC
+schemaspy.p=DBC
