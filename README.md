@@ -1,11 +1,5 @@
 # SchemaSpy - Teradata
-SELECT CONCAT('SELECT * FROM ', DatabaseName, '.',TableName,';') FROM "DBC"."TablesV" 
-WHERE TableKind = 'T' AND DatabaseName='UNIVERSIDAD' ;
-
-SELECT * FROM UNIVERSIDAD.Profesor;
-
-SELECT * FROM UNIVERSIDAD.Estudiante_Materia;
-
+SELECT CONCAT('SELECT * FROM ', DatabaseName, '.',TableName,';') FROM "DBC"."TablesV" WHERE TableKind = 'T' AND DatabaseName='UNIVERSIDAD';
 
 java -jar schemaspy-6.1.0.jar -configFile config.file -t teradata.properties -vizjs -debug
 
